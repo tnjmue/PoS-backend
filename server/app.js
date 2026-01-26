@@ -1,22 +1,38 @@
-// ℹ️ Gets access to environment variables/settings
-// https://www.npmjs.com/package/dotenv
+const express = require("express");
+
+//access to environment variables
 require("dotenv").config();
+
 
 // ℹ️ Connects to the database
 require("./db");
 
-// Handles http requests (express is node js framework)
-// https://www.npmjs.com/package/express
-const express = require("express");
-
+// initialize express app
 const app = express();
 
-// ℹ️ This function is getting exported from the config folder. It runs most pieces of middleware
+// runs most middleware
 require("./config")(app);
 
+
 // 👇 Start handling routes here
+const { isAuthenticated } = require('./auth/jwt.js')
 const indexRoutes = require("./routes/index.routes");
 app.use("/api", indexRoutes);
+
+const gameRoutes = require("routes/game.routes");
+app.use("api/games", gameRoutes);
+
+const userRoutes = require("./routes/user.routes");
+app.use("/api/users", isAuthenticated, userRoutes);
+
+const userGameRoutes = require("./routes/userGame.routes");
+app.use("/api/userGames", userGameRoutes);
+
+const indexRoutes = require("./routes/index.routes");
+app.use("/api", indexRoutes);
+
+const authRoutes = require("./routes/auth.routes");
+app.use("/auth", authRoutes);
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);

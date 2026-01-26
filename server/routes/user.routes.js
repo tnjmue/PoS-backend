@@ -1,0 +1,30 @@
+const router = require('express').Router();
+const User = require('../models/User.model');
+
+//POST - create a new user: through sign up -> auth.routes
+
+//GET - display all users: not necessary
+
+//GET - display user profile
+router.get('/:userId', (req, res, next) => {
+    const { userId }= req.params;
+    User.findById(userId)
+    .then(user => res.status(200).json(user))
+    .catch(err => next(err))
+})
+
+//PUT - edit user profile/info
+router.put('/:userId', (req, res, next) => {
+    const { userId }= req.params;
+    User.findByIdAndUpdate(userId, req.body, {new: true})
+    .then(updatedUser => res.status(200).json(updatedUser))
+    .catch(err => next(err))
+})
+
+//DELETE - delete user account
+router.delete('/:userId', (req, res, next) => {
+    const { userId }= req.params;
+    User.findByIdAndDelete(userId)
+    .then(deletedUser => res.status(204).json({'message': `user ${deletedUser} has been deleted`}))
+    .catch(err => next(err))
+})
