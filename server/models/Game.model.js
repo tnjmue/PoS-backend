@@ -1,3 +1,5 @@
+const { Schema, model } = require("mongoose");
+
 const gameSchema = new Schema(
     {
         title: { type: String, required: true },
@@ -11,6 +13,6 @@ const gameSchema = new Schema(
     { timestamps: true }
 );
 
-const Game = model("Game", stackGame);
+const Game = model("Game", gameSchema);
 
 module.exports = Game;

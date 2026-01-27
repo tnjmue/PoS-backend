@@ -38,3 +38,5 @@ router.delete('/:gameId', (req, res, next) => {
     .then(deletedGame => res.status(204).json({'message': `${deletedGame} has been deleted.`}))
     .catch(err => next(err))
 })
+
+module.exports = router;

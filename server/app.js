@@ -14,22 +14,25 @@ const app = express();
 require("./config")(app);
 
 
-// 👇 Start handling routes here
+// import files
+const Game = require('./models/Game.model.js')
+const UserGame = require('./models/UserGame.model.js')
+const User = require('./models/User.model.js')
 const { isAuthenticated } = require('./auth/jwt.js')
+
+
+// 👇 Start handling routes here
 const indexRoutes = require("./routes/index.routes");
 app.use("/api", indexRoutes);
 
-const gameRoutes = require("routes/game.routes");
-app.use("api/games", gameRoutes);
+const gameRoutes = require("./routes/game.routes");
+app.use("/api/games", gameRoutes);
 
 const userRoutes = require("./routes/user.routes");
 app.use("/api/users", isAuthenticated, userRoutes);
 
 const userGameRoutes = require("./routes/userGame.routes");
 app.use("/api/userGames", userGameRoutes);
-
-const indexRoutes = require("./routes/index.routes");
-app.use("/api", indexRoutes);
 
 const authRoutes = require("./routes/auth.routes");
 app.use("/auth", authRoutes);

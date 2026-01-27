@@ -3,7 +3,12 @@ const User = require('../models/User.model');
 
 //POST - create a new user: through sign up -> auth.routes
 
-//GET - display all users: not necessary
+//GET - for testing only, knowing id not necessary
+router.get("/me", (req, res) => {
+  User.findById(req.payload._id)
+    .then(currentUser => res.json(currentUser))
+    .catch(err => next(err));
+});
 
 //GET - display user profile
 router.get('/:userId', (req, res, next) => {
@@ -28,3 +33,5 @@ router.delete('/:userId', (req, res, next) => {
     .then(deletedUser => res.status(204).json({'message': `user ${deletedUser} has been deleted`}))
     .catch(err => next(err))
 })
+
+module.exports = router;
