@@ -35,7 +35,7 @@ router.put('/:gameId', (req, res, next) => {
 router.delete('/:gameId', (req, res, next) => {
     const { gameId } = req.params;
     Game.findByIdAndDelete(gameId)
-    .then(deletedGame => res.status(204).json({'message': `${deletedGame} has been deleted.`}))
+    .then(deletedGame => res.sendStatus(204))
     .catch(err => next(err))
 })
 

@@ -29,9 +29,15 @@ router.put('/:userId', (req, res, next) => {
 //DELETE - delete user account
 router.delete('/:userId', (req, res, next) => {
     const { userId }= req.params;
+
     User.findByIdAndDelete(userId)
-    .then(deletedUser => res.status(204).json({'message': `user ${deletedUser} has been deleted`}))
-    .catch(err => next(err))
+    .then(deletedUser => {
+        if (req.payload._id === userId) {
+        return res.sendStatus(204);
+        }
+    })
+    .catch(err => next(err));
 })
+
 
 module.exports = router;
