@@ -136,4 +136,12 @@ router.get('/verify', isAuthenticated, (req, res, next) => {
     });
 
 
+// PUT - update password of existing user
+router.put('/auth/password-update', (req, res, next) => {
+const { currentPassword, newPassword } = req.body;
+if (currentPassword === user.password) {
+    User.findByIdAndUpdate(userId)
+}
+})
+
 module.exports = router;

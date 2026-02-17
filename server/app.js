@@ -3,7 +3,6 @@ const express = require("express");
 //access to environment variables
 require("dotenv").config();
 
-
 // ℹ️ Connects to the database
 require("./db");
 
@@ -32,7 +31,7 @@ const userRoutes = require("./routes/user.routes");
 app.use("/api/users", isAuthenticated, userRoutes);
 
 const userGameRoutes = require("./routes/userGame.routes");
-app.use("/api/userGames", userGameRoutes);
+app.use("/api/userGames", isAuthenticated, userGameRoutes);
 
 const authRoutes = require("./routes/auth.routes");
 app.use("/auth", authRoutes);
