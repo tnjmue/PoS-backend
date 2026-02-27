@@ -8,7 +8,8 @@ const gameSchema = new Schema(
         image: { type: String },
         averageRating: { type: [String], enum: ["positive", "okay", "negative"] },
         platforms: { type: [String], enum: ["PC", "PlayStation", "Xbox", "Nintendo", "Mac", "Linux", "Web"] },
-        genres: { type: [String], enum: ["building", "card", "casual", "horror", "indie", "fighting", "MMO", "platformer", "puzzle", "RPG", "shooter", "simulation", "sports", "strategy", "survival"]}
+        genres: { type: [String], enum: ["building", "card", "casual", "horror", "indie", "fighting", "MMO", "platformer", "puzzle", "RPG", "shooter", "simulation", "sports", "strategy", "survival"]},
+        developer: { type: String }
     },
     { timestamps: true }
 );
