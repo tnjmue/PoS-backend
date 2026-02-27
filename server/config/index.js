@@ -26,7 +26,8 @@ module.exports = (app) => {
     cors({
       origin: [
         FRONTEND_URL,
-      "http://localhost:5173"
+      "http://localhost:5173",
+      "https://pile-of-shame-games.netlify.app/"
     ], 
     credentials: true
     })
