@@ -2,26 +2,32 @@
 
 ### *Backend repository*
 
-**Frontend:** https://github.com/tnjmue/PoS-frontend
+Backend deployed on **Render**  
+Database hosted on **MongoDB Atlas**  
+Frontend deployed on **Netlify**
 
-**Live Demo:** https://pile-of-shame-games.netlify.app/
+**Frontend folder:** https://github.com/tnjmue/PoS-frontend
 
-## 𖡊 the idea behind the project 
+**Backend deployed:** https://pile-of-shame.onrender.com/
+
+## 𖡊 the idea behind the project: 
 
 Pile of Shame is a video game logging platform inspired by Goodreads - but make it games!
 For a more elaborate description, see the frontend README.
 
-## ⌨ built with
-- Node.js & Express
+## ⌨ built with:
+- Node.js
+- Express
 - MongoDB & Mongoose
-- JWT & bcrypt
+- JWT authentication
+- bcrypt password hashing
 
 ## ➤ how to get started locally:
 
 ### prerequisites
 - Node.js installed
 - npm or yarn
-- MongoDB Atlas account (or local MongoDB)
+- MongoDB Atlas account or local MongoDB installation
 
 ### installation
 1. Clone the repo:
@@ -36,13 +42,19 @@ For a more elaborate description, see the frontend README.
 ```
    npm install
 ```
-4. Create a `.env` file in the root folder with:
+4. Create a `.env` file in the server folder with:
 ```
    PORT=5005
    ORIGIN=http://localhost:5173
    TOKEN_SECRET=your_secret_token_here
    MONGODB_URI=your_mongodb_connection_string
 ```
+- **For TOKEN_SECRET:** Generate a secure random string (or make one up if you're just playing with this).
+- **For MONGODB_URI:** That's your MongoDB Atlas connection string - make sure your IP and the IP(s) of the service you're hosting from (Render in my case) are whitelisted on Atlas!
+Your connection string will look somewhat like this:  
+*mongodb+srv://username:password@cluster-name.random.mongodb.net/database-name?retryWrites=true&w=majority*  
+Make sure your template includes the database-name. You can leave it out and the backend deployment will still be successful - but Atlas will generate an empty "test" database for you and you won't be able to access the data you actually want.
+
 5. Run the development server:
 ```
    npm run dev
@@ -50,7 +62,6 @@ For a more elaborate description, see the frontend README.
 
 The server will run on `http://localhost:5005`
 
-** *Note:* You'll need to replace your_secret_token_here with any random string and your_mongodb_connection_string with your actual MongoDB URI if you want to run it locally with your own database!
 
 ---
 
@@ -71,5 +82,3 @@ The server will run on `http://localhost:5005`
 - `GET /api/userGames/:userGameId` - Get single user game
 - `PUT /api/userGames/:userGameId` - Update user game
 - `DELETE /api/userGames/:userGameId` - Delete user game
-
----
