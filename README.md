@@ -82,3 +82,5 @@ The server will run on `http://localhost:5005`
 - `GET /api/userGames/:userGameId` - Get single user game
 - `PUT /api/userGames/:userGameId` - Update user game
 - `DELETE /api/userGames/:userGameId` - Delete user game
+
+---
