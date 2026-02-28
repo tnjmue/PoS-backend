@@ -28,9 +28,9 @@ For a more elaborate description, see the frontend README.
 ```
    git clone https://github.com/tnjmue/PoS-backend.git
 ```
-2. Navigate to the project folder:
+2. Navigate to the server folder:
 ```
-   cd PoS-backend
+   cd PoS-backend/server
 ```
 3. Install dependencies:
 ```
