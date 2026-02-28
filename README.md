@@ -52,8 +52,8 @@ For a more elaborate description, see the frontend README.
 - **For TOKEN_SECRET:** Generate a secure random string (or make one up if you're just playing with this).
 - **For MONGODB_URI:** That's your MongoDB Atlas connection string - make sure your IP and the IP(s) of the service you're hosting from (Render in my case) are whitelisted on Atlas!
 Your connection string will look somewhat like this:  
-*mongodb+srv://username:password@cluster-name.random.mongodb.net/database-name?retryWrites=true&w=majority*  
-Make sure your template includes the database-name. You can leave it out and the backend deployment will still be successful - but Atlas will generate an empty "test" database for you and you won't be able to access the data you actually want.
+**`mongodb+srv://<username>:<password>@<cluster-name>.<random>.mongodb.net/<database-name>?retryWrites=true&w=majority`**  
+Make sure your template includes the `<database-name>`. You can leave it out and the backend deployment will still be successful - but Atlas will generate an empty "test" database for you and you won't be able to access the data you actually want.
 
 5. Run the development server:
 ```
