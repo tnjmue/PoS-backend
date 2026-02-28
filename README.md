@@ -67,6 +67,9 @@ The server will run on `http://localhost:5005`
 
 ## 📡 api endpoints
 
+### Index (for testing)
+- GET /api - displays `All good in here`
+
 ### Authentication
 - `POST /auth/signup` - Create new user
 - `POST /auth/login` - Login user
